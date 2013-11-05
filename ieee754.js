@@ -48,6 +48,7 @@ function buildFloatDecoder(numBytes, exponentBits, exponentBias) {
 		if (exponent == eMax) {
 			return sign * Infinity;
 		} else if (exponent == 0) {
+			exponent += 1;
 			var significand = parseInt(leftBits, 2);
 		} else {
 			significand = parseInt("1" + leftBits, 2);
@@ -100,6 +101,7 @@ check32(Infinity);
 check32(-Infinity);
 check32(3.4028234e38, 1e35);
 check32(1.18e-38, 1e-39);
+check32(1.4e-44, 1e-45);
 check32(1/3, 1e-5);
 
 check64(0);
@@ -110,6 +112,7 @@ check64(Infinity);
 check64(-Infinity);
 check64(1.7976931348623157e308, 1e308);
 check64(2.2250738585072014e-308, 1e-309);
+check64(4.9406564584124654e-323, 5e-324);
 check64(1/3, 1e-8);
 
 //*/
